@@ -55,7 +55,7 @@ public class Owner {
 
     @Override
     public String toString() {
-        return "Owner{" + "id=" + id + ", name=" + name + ", cars=" + cars + '}';
+        return name;
     }
     
     

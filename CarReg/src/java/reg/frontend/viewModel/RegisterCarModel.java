@@ -5,6 +5,7 @@
  */
 package reg.frontend.viewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -31,6 +32,8 @@ public class RegisterCarModel {
     private Car car = new Car();
     private Truck truck = new Truck();
     private PassengerCar pass = new PassengerCar();
+    
+    private List<PassengerCar> pcs=new ArrayList<>();
 
     public Truck getTruck() {
         return truck;
@@ -99,6 +102,10 @@ public class RegisterCarModel {
             e.printStackTrace();
             return "index";
         }
+    }
+
+    public List<PassengerCar> getPcs() {
+        return pc.findAll();
     }
      
 }
