@@ -10,6 +10,7 @@
         <center>
             <h2>Register</h2>
             <h:form>
+                <h:messages globalOnly="true" />
                 <h:panelGrid columns="2">
                 <h:outputLabel value="Owner ID"/>
                 <h:inputText value="#{registration.owner.id}"/>
@@ -23,27 +24,32 @@
                   <h:inputText value="#{registration.pass.manufacturingYear}"/>
                   <h:outputLabel value="Passengers number"/>
                   <h:inputText value="#{registration.pass.numberOfPassengers}"/>
-                  <h:commandButton value="ADD" action="#{registration.Add()}"></h:commandButton>
+                  <h:commandButton value="ADD" action="#{registration.AddPassenger()}"></h:commandButton>
                 </h:panelGrid>
             </h:form>
             
-            <h:dataTable var="reg" value="#{registration.allCars()}">
+            <h:dataTable  border="2" var="reg" value="#{registration.pcs}">
                 <h:column>
                     <f:facet name="header">Id</f:facet>
-                    <h:outputText value="#{reg.id}"></h:outputText>
+                    <h:outputText value="#{reg.owner}"></h:outputText>
                 </h:column>
                   <h:column>
                     <f:facet name="header">Name</f:facet>
-                    <h:outputText value="${reg.name}"></h:outputText>
+                    <h:outputText value="${reg.plateNo}"></h:outputText>
                 </h:column>
                   <h:column>
-                    <f:facet name="header">Cars</f:facet>
-                    <h:outputText value="${reg.cars}"></h:outputText>
+                    <f:facet name="header">NumberOfPassengers</f:facet>
+                    <h:outputText value="${reg.numberOfPassengers}"></h:outputText>
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">Model</f:facet>
+                    <h:outputText value="${reg.model}"></h:outputText>
                     
                 </h:column>
                 <h:column>
+                    <f:facet name="header">Operations</f:facet>
                     <h:form>
-                    <h:commandButton value="DELETE" action="#{registration.delete(reg)}"/>
+                        <h:commandButton value="DELETE" action="#{registration.deletePassenger(reg)}"/>
                     <h:commandButton value="UPDATE" action="#{registration.Update(reg)}"/>
                </h:form>
                 </h:column>
