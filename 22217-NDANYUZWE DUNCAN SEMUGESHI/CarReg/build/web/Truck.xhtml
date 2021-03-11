@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Register Truck 
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Owner ID"/>
+                <h:inputText value="#{registration.owner.id}"/>
+                 <h:outputLabel value="Owner Name"/>
+                 <h:inputText value="#{registration.owner.name}"/>
+                    <h:outputLabel value="LoadCapacity:" for="loadCapacity" />
+                    
+                    <h:inputText id="loadCapacity" value="#{registration.truck.loadCapacity}" title="LoadCapacity" />
+                    <h:outputLabel value="PlateNo:" for="plateNo" />
+                    <h:inputText id="plateNo" value="#{registration.truck.plateNo}" title="PlateNo" />
+                    <h:outputLabel value="Model:" for="model" />
+                    <h:inputText id="model" value="#{registration.truck.model}" title="Model" />
+                    <h:outputLabel value="ManufacturingYear:" for="manufacturingYear" />
+                    <h:inputText id="manufacturingYear" value="#{registration.truck.manufacturingYear}" title="ManufacturingYear" />
+                    <!--<h:outputLabel value="Owner:" for="owner" />-->
+<!--                    <h:selectOneMenu id="owner" value="#{registration.truck.owner}" title="Owner" converter="SelectItemToEntityConverter" >
+                         TODO: update below reference to list of available items
+                         <f:selectItem  itemValue="#{null}"/>
+                         <f:selectItems  value="#{registration.allOwners()}" var="r" itemLabel="${r.id}" itemValue="#{r}"/>
+                    </h:selectOneMenu>-->
+                       <h:commandButton value="ADD" action="#{registration.AddTruck()}"></h:commandButton>
+                       
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{registration.allTrucks()}" var="item" border="2">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="LoadCapacity"/>
+                        </f:facet>
+                        <h:outputText value="#{item.loadCapacity}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PlateNo"/>
+                        </f:facet>
+                        <h:outputText value="#{item.plateNo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model"/>
+                        </f:facet>
+                        <h:outputText value="#{item.model}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ManufacturingYear"/>
+                        </f:facet>
+                        <h:outputText value="#{item.manufacturingYear}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Owner"/>
+                        </f:facet>
+                        <h:outputText value="#{item.owner}"/>
+                        
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Operations</f:facet>
+                    <h:form>
+                        <h:commandButton value="DELETE" action="#{registration.deleteTruck(item)}" />
+                    <h:commandButton value="UPDATE" action="#{registration.Update(reg)}"/>
+               </h:form>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

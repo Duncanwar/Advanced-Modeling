@@ -1,0 +1,8 @@
+A) The strategies for persisting the above data in a table are:
+
+- Map the entire class hierarchy to a single table
+- Map each concrete class to its own table
+- Map each class to its own table
+
+C) The Strategy I could use is table per class because attributes/fields in concrete class never change often. This strategy gives us a good database normalization, as it cuts off the unwanted nullable and and removes duplicate columns.
+

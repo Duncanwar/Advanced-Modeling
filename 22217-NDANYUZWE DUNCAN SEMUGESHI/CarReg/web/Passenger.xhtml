@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h2>Register</h2>
+            <h:form>
+                <h:messages globalOnly="true" />
+                <h:panelGrid columns="2">
+                <h:outputLabel value="Owner ID"/>
+                <h:inputText value="#{registration.owner.id}"/>
+                 <h:outputLabel value="Owner Name"/>
+                 <h:inputText value="#{registration.owner.name}"/>
+                <h:outputLabel value="Plate Number"/>
+                <h:inputText value="#{registration.pass.plateNo}"/>
+                <h:outputLabel value="Car Model"/>
+                <h:inputText value="#{registration.pass.model}"/>
+                  <h:outputLabel value="Manufacturing year"/>
+                  <h:inputText value="#{registration.pass.manufacturingYear}"/>
+                  <h:outputLabel value="Passengers number"/>
+                  <h:inputText value="#{registration.pass.numberOfPassengers}"/>
+                  <h:commandButton value="ADD" action="#{registration.AddPassenger()}"></h:commandButton>
+                </h:panelGrid>
+            </h:form>
+            
+            <h:dataTable  border="2" var="reg" value="#{registration.pcs}">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{reg.owner}"></h:outputText>
+                </h:column>
+                  <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="${reg.plateNo}"></h:outputText>
+                </h:column>
+                  <h:column>
+                    <f:facet name="header">NumberOfPassengers</f:facet>
+                    <h:outputText value="${reg.numberOfPassengers}"></h:outputText>
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">Model</f:facet>
+                    <h:outputText value="${reg.model}"></h:outputText>
+                    
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Operations</f:facet>
+                    <h:form>
+                        <h:commandButton value="DELETE" action="#{registration.deletePassenger(reg)}"/>
+                    <h:commandButton value="UPDATE" action="#{registration.Update(reg)}"/>
+               </h:form>
+                </h:column>
+            </h:dataTable>
+        </center>
+    </h:body>
+</html>
+
